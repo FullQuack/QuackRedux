@@ -33,5 +33,308 @@
     crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
     crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+
+
+      <style>
+      /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
+      body {
+  background: #1D9FD1;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow:hidden;
+}
+
+.water-level {
+  display: block;
+  position: absolute;
+  top: 80%;
+  bottom: -45%;
+  left: -10%;
+  right: -10%;
+  background: #1D9FD1;
+  z-index: 10;
+  opacity: .5;
+  animation: infinite bobbing 6000ms ease;
+}
+.water-level:after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 75%;
+  left: -30%;
+  right: -30%;
+  height: 200%;
+  border-style: solid;
+  border-color: #1D9FD1;
+  border-width: 0 0 5vw 0;
+  border-radius: 100%;
+  box-sizing: content-box;
+}
+
+.duck {
+  width: 30vw;
+  position: relative;
+  animation: infinite bobbing 4000ms linear;
+}
+.duck:after {
+  content: '';
+  display: block;
+  padding-top: 100%;
+}
+
+.body {
+  position: absolute;
+  top: 40%;
+  left: 0;
+  right: 0;
+  height: 60%;
+  background: #feef9e;
+  display: block;
+  border-radius: 100% 100% 90% 90%;
+  box-shadow: inset -2vw -2vw 0 1vw #FCE481;
+  border: 1vw solid #feef9e;
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+.head {
+  position: absolute;
+  z-index: 1;
+  bottom: 70%;
+  left: 16%;
+  right: 16%;
+  height: 110%;
+  background: #feef9e;
+  display: block;
+  border-top-left-radius: 150% 200%;
+  border-top-right-radius: 150% 210%;
+  border-bottom-right-radius: 100%;
+  border-bottom-left-radius: 100% 100%;
+  box-shadow: inset -2vw -1vw 0 0 #FCE481;
+  border: 1vw solid #feef9e;
+  box-sizing: border-box;
+  animation: infinite bobbing 4000ms ease reverse;
+}
+
+.feathers {
+  position: absolute;
+  bottom: 90%;
+  height: 40%;
+  left: 0;
+  right: 0;
+}
+.feathers:after, .feathers:before {
+  position: absolute;
+  left: 40%;
+  bottom: 0;
+  content: '';
+  display: block;
+  width: 30%;
+  height: 100%;
+  background: #feef9e;
+  border-radius: 100% 0;
+  transform-origin: bottom center;
+}
+.feathers:before {
+  transform: rotate(40deg);
+  background: #FCE481;
+}
+.feathers:after {
+  transform: rotate(-10deg);
+}
+
+.bill {
+  position: absolute;
+  top: 65%;
+  height: 20%;
+  left: 18%;
+  right: 18%;
+  background: #FDB813;
+  border-top-left-radius: 150% 200%;
+  border-top-right-radius: 150% 200%;
+  border-bottom-right-radius: 50% 100%;
+  border-bottom-left-radius: 50% 100%;
+}
+.bill:after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 20%;
+  width: 60%;
+  height: 30%;
+  background: #F8951D;
+  border-top-left-radius: 100% 200%;
+  border-top-right-radius: 100% 200%;
+}
+
+.eyes {
+  position: absolute;
+  top: 60%;
+  left: 25%;
+  right: 25%;
+  animation: infinite blink 6000ms ease;
+}
+
+.eye {
+  position: absolute;
+  bottom: 0;
+  width: 16%;
+  background: #005A79;
+  border-radius: 100%;
+}
+.eye:after {
+  content: '';
+  display: block;
+  padding-top: 100%;
+}
+.eye:first-child {
+  left: 0;
+}
+.eye:last-child {
+  right: 0;
+}
+
+.wings {
+  position: absolute;
+  bottom: 110%;
+  left: -10%;
+  right: -10%;
+}
+
+.wing {
+  position: absolute;
+  top: 0;
+  width: 30%;
+  background: #feef9e;
+}
+.wing:after {
+  content: '';
+  display: block;
+  padding-top: 100%;
+}
+.wing:first-child {
+  left: 0;
+  border-radius: 100% 0 0 10%;
+}
+.wing:last-child {
+  right: 0;
+  border-radius: 0 100% 10% 0;
+}
+
+.feet {
+  position: absolute;
+  top: 85%;
+  left: 10%;
+  right: 10%;
+  z-index: 0;
+  transform: translate(0, 0);
+}
+
+.foot {
+  position: absolute;
+  top: 0;
+  width: 30%;
+  background: #FDB813;
+  border-radius: 100% 100% 20% 20%;
+  transform-origin: top center;
+  transform-style: flat;
+  z-index: 0;
+}
+.foot:after {
+  content: '';
+  display: block;
+  padding-top: 100%;
+}
+.foot:first-child {
+  left: 0;
+  animation: infinite paddle-left 4000ms linear;
+  animation-delay: 1000ms;
+  transform-origin: top right;
+}
+.foot:last-child {
+  right: 0;
+  animation: infinite paddle-right 4000ms linear;
+  transform-origin: top left;
+}
+
+@keyframes bobbing {
+  20% {
+    transform: translateY(-5%) rotate(3deg);
+  }
+  50% {
+    transform: translateY(0) rotate(0);
+  }
+  80% {
+    transform: translateY(-5%) rotate(-3deg);
+  }
+}
+@keyframes ripple {
+  100% {
+    width: 80vw;
+    height: 20vw;
+    opacity: 0;
+    border-width: 0vw;
+  }
+}
+@keyframes blink {
+  0%,45%,55%,100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0);
+  }
+}
+@keyframes paddle-left {
+  25% {
+    transform: rotateX(-45deg) rotateZ(0deg);
+  }
+  75% {
+    transform: rotateX(30deg) rotateZ(-20deg);
+  }
+}
+@keyframes paddle-right {
+  25% {
+    transform: rotateX(-45deg) rotateZ(0deg);
+  }
+  75% {
+    transform: rotateX(30deg) rotateZ(20deg);
+    z-index: 0;
+  }
+}
+
+    </style>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+</head>
+
+<body></body>
+  <div class="duck">
+  <div class="body">
+    <div class="head">
+      <div class="feathers"></div>
+      <div class="bill"></div>
+      <div class="eyes">
+        <div class="eye"></div>
+        <div class="eye"></div>
+      </div>
+    </div>
+    <div class="wings">
+      <div class="wing"></div>
+      <div class="wing"></div>
+    </div>
+  </div>
+  <div class="feet">
+    <div class="foot"></div>
+    <div class="foot"></div>
+  </div>
+  <div class="water-level"></div>
+</div>
+
+
   </body>
 </html>

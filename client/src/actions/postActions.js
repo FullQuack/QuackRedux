@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ADD_POST, GET_FEED } from './types';
+import { ADD_POST, GET_FEED, ADD_LIKE } from './types';
 
 
 export const getFeed = () => dispatch => {

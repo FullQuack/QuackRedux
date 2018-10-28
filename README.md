@@ -2,7 +2,7 @@
 
 <blockquote>Despite ample ‘coding interview training’ sites/resources, many developers lack the experience to improve their technical communication to excel on job interview and whiteboarding questions. </blockquote>
 
-Hello, and welcome to our repo! Our **client** runs on localhost:3000, our express **server** runs on localhost:5000 (two terminals running <code>npm run start</code>), and **mongoDB** is currently set for the developer's local database, although an mLab URI can be substituted in <code>server/config/keys.js</code>. 
+Hello, and welcome to the wonderful world of [FullQuack](https://youtu.be/bf9d7rSf_Ks?t=33)! Our **client** runs on localhost:3000, our express **server** runs on localhost:5000 (two terminals running <code>npm run start</code>), and **mongoDB** is currently set for the developer's local database, although an mLab URI can be substituted in <code>server/config/keys.js</code>. 
 
 Feel free to utlize our **mLab URI** @ <code>mongodb://admin:fullquack3@ds119449.mlab.com:19449/fullquack</code>just don't be surprised if we pop in some new datapoints here and there as we can't wait to do more refactoring ;)
 

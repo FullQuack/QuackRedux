@@ -4,7 +4,6 @@
   "description": "A community learning site for developers to improve their technical communication",
   "main": "server.js",
   "scripts": {
-    "client-install": "npm install --prefix client",
     "start": "node server.js",
     "server": "nodemon server.js"
   },
@@ -14,7 +13,6 @@
     "axios": "^0.18.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
-    "concurrently": "^4.0.1",
     "create-react-app": "^2.0.4",
     "express": "^4.16.4",
     "jsonwebtoken": "^8.3.0",
@@ -23,7 +21,6 @@
     "passport-jwt": "^4.0.0",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
-    "react-emoji-render": "^0.4.6",
     "validator": "^10.8.0"
   },
   "devDependencies": {

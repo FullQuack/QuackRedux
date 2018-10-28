@@ -12,20 +12,24 @@ Thanks in advance for your help, feel free to ask us anything about the code, an
 
 **--Jonathan, Andrew, and Jonah**
 
-## Stretch Goals / Next Steps ###
+## Next Steps ###
 
 - [ ] Linking up already-created back-end routes to the front-end (more details in the **[Backend Routes](#backend-routes)** section), including: liking/unliking, adding/deleting posts and comments, and deleting users' accounts. 
 
-- [ ] Currently questions are presented by the most recent -- we aim to add filtering options, including order-by-popularity and tag-names (Javascript, Google Questions, roles, etc.). 
+- [ ] Questions are currently displayed by recency, we'd like to add more filtering/sorting options, including popularity and tag-names (Javascript, Google Questions, roles, etc.). 
 
-- [ ] Implementing a 'Logout User' in two ways: 1) User-controlled 'logout' button; 2) Setting an expiration timeout (jwt token expiration isn't applicable to our current codebase, since the token, once logged in is set by localStorage, not token lifespan). 
+- [ ] Implementing a 'Logout User' in two ways: 1) User-controlled 'logout' button; 2) Setting an expiration timeout on the backend for perhaps 24 hours after login (we realize this isn't a high-security app, this is logout is not as important as #1, but still a nice feature). Redux holds the "iat" issued-at time for the User's token in the store, so a little Math (i.e., Time Now - Issued At Time = Time) could do the trick. 
 
 - [ ] Setting up our core functionality to record and watch back 'Quacks', AKA video/audio recordings of users' answers to programming/whiteboard questions.  We are aiming to use (free and well-documented) in-browser video and/or audio recording APIs, particularly WebRTC (see **[Additional Info](#additional-info)**
 ).  The first step is simply being able to record/re-watch/download users' own videos locally for each question.
 
-- [ ] In terms of layout. we envision each question having a button that toggles an embedded video/audio div either in the main feed, or on separate route/component, with a small embedded repl.it-like coding widget below to type out the code as they record. Ultimately, our grander goal is to serve up (even potentially host) all clips so that the community can view / comment / vote on each others' 'quacks', similar to how you can see spoilers of how other developers solved programming questions once you've answered them on text-based code-training sites.
+![Video Example](https://camo.githubusercontent.com/477fd11fb754dba293b75b89940f6d8dcfe04646/687474703a2f2f662e636c2e6c792f6974656d732f3064323233473249314b334833383176314833452f53637265656e25323053686f74253230323031332d30312d31332532306174253230332e30392e3137253230504d2e706e67)
 
-- [ ] We're also interested in implementing a merit-and-engagement-based points system (similar to Stack Overflow), 'verified' status for professional devs, and "Staff Pick" responses.   
+- [ ] In terms of layout. we envision each question having a button that toggles an embedded video/audio div either in the main feed, or on separate route/component, with a small [embedded repl.it iframe](https://repl.it/site/docs/repls/embed) below to type out the code as they record. Ultimately, our grander goal is to serve up (even potentially host) all clips so that the community can view / comment / vote on each others' 'quacks', similar to how you can see spoilers of how other developers solved programming questions once you've answered them on text-based code-training sites.
+
+- [ ] Speaking of our front-end design, the bouncing duck background, made with inline CSS in <code>client/public/index.html</code>, was (lovingly) lifted from another artist for our demo. We want our own design with this duck as inspiration, adding more flexibility/functionality (one limitation of the current duck is that it prevents page-scrolling). In addition to time-based css animations, we want to make it also responsive to user actions (i.e., a button click on the 'record-a-quack' button triggers a <code>@keyframes</code> animation loop ([example](https://codepen.io/velopert/pen/PzoWpE)) where our duck opens it's mouth to 'speak', etc.)  Additionally, the rest of our layout/design is hastily-added twitter bootstrap boilerplate classes. We want thoughtfully-designed 'question' divs, bright buttons, clickable input tags ![tags!](https://vuejsexamples.com/content/images/2018/02/Vue-Tags-Input.gif) i.e., "Google, Algorithm, Front-End"-- which, despite a plethora of react-tag npm packages, proved difficult for us. Also, [animated CSS bubbles](https://codepen.io/Mark_Bowley/pen/mEtqj), and, of course, LOTS of rubber ducks... 
+
+- [ ] We're also interested in implementing a merit-and-engagement-based points system (similar to [Stack Overflow badges](https://stackoverflow.com/help/badges)), 'verified' status for professional devs, and "Staff Pick" responses.   
 
 - [ ] While we don't mind seeing code snippets here and there on the site -- particularly necessary in the interview prompts as well as the previously mentioned code editor widget -- we nontheless aim to limit code answers/comments, perhaps through strict limits on comment length, which can be handled via adjustments to <code>server/validation</code> (similar to our email/password validation handling). If users want to speak via code, they could potentially "Quack" back with a video and/or audio comment, just not reams of code. 
 

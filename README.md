@@ -57,7 +57,7 @@ password:123456</blockquote>
     "comments": [],
     "date": "2018-10-24T17:50:04.725Z",
     "__v": 0
-}</blockquote>**validator** ensures mandatory text field. **Note:** Additional fields (name, avatar) will be pulled via Redux State, not necessary in post request body. 
+}</blockquote>**validator** ensures mandatory text field. **Note:** Additional fields (name) will be pulled via Redux State, not necessary in post request body. 
 
 15. - [X] **Get all users' posts** (Public) sorted by date, *GET* @ '/api/posts/' -- returns all posts, as array of Post objects:<blockquote>[
     {
@@ -108,7 +108,7 @@ password:123456</blockquote>
     ],
     "date": "2018-10-24T17:56:41.491Z",
     "__v": 1
-}</blockquote>**validator** ensures mandatory text field. **Note:** Additional fields (name, avatar) will be pulled via Redux State, not necessary in post request body.
+}</blockquote>**validator** ensures mandatory text field. **Note:** Additional fields (i.e., name) will be pulled via Redux State, not necessary in post request body.
 
 17. - [ ] **Delete a comment** (authenticated) via *DELETE* @ '/api/posts/comment/:id/:comment_id -- returns updated *Post* <blockquote>{
     "_id": "5bd0b259eab29e88d1ecc0a7",

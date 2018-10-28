@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys');
@@ -42,17 +41,11 @@ router.post('/register', (req, res) => {
       if (user) {
         errors.email = 'Email already exists';
         return res.status(400).json(errors);
-      } else {
-        const avatar = gravatar.url(req.body.email, {
-          s: '200', // Size
-          r: 'pg', // Rating
-          d: 'retro' // Default
-        });
+      } 
 
         const newUser = new User({
           name: req.body.name,
           email: req.body.email,
-          avatar,
           password: req.body.password
         });
 
@@ -108,7 +101,6 @@ router.post('/login', (req, res) => {
             const payload = {
               id: user.id,
               name: user.name,
-              avatar: user.avatar
             }; // Create JWT Payload
 
             // Sign Token

@@ -14,20 +14,20 @@ Thanks in advance for your help, feel free to ask us anything about the code, an
 
 ## Stretch Goals / Next Steps ###
 
-Linking up already-created back-end routes to the front-end (more details in the **[Backend Routes](#backend-routes)** section), including: liking/unliking, adding/deleting posts and comments, and deleting users' accounts. 
+- [ ] Linking up already-created back-end routes to the front-end (more details in the **[Backend Routes](#backend-routes)** section), including: liking/unliking, adding/deleting posts and comments, and deleting users' accounts. 
 
-Currently questions are presented by the most recent -- we aim to add filtering options, including order-by-popularity and tag-names (Javascript, Google Questions, roles, etc.). 
+- [ ] Currently questions are presented by the most recent -- we aim to add filtering options, including order-by-popularity and tag-names (Javascript, Google Questions, roles, etc.). 
 
-Implementing a 'Logout User' in two ways: 1) User-controlled 'logout' button; 2) Setting an expiration timeout (jwt token expiration isn't applicable to our current codebase, since the token, once logged in is set by localStorage, not token lifespan). 
+- [ ] Implementing a 'Logout User' in two ways: 1) User-controlled 'logout' button; 2) Setting an expiration timeout (jwt token expiration isn't applicable to our current codebase, since the token, once logged in is set by localStorage, not token lifespan). 
 
-Setting up our core functionality to record and watch back 'Quacks', AKA video/audio recordings of users' answers to programming/whiteboard questions.  We are aiming to use (free and well-documented) in-browser video and/or audio recording APIs, particularly WebRTC (see [Video and Audio](#video-and-audio)
+- [ ] Setting up our core functionality to record and watch back 'Quacks', AKA video/audio recordings of users' answers to programming/whiteboard questions.  We are aiming to use (free and well-documented) in-browser video and/or audio recording APIs, particularly WebRTC (see **[Video and Audio](#video-and-audio)**
 ).  The first step is simply being able to record/re-watch/download users' own videos locally for each question.
 
-In terms of layout. we envision each question having a button that toggles an embedded video/audio div either in the main feed, or on separate route/component, with a small embedded repl.it-like coding widget below to type out the code as they record. Ultimately, our grander goal is to serve up (even potentially host) all clips so that the community can view / comment / vote on each others' 'quacks', similar to how you can see spoilers of how other developers solved programming questions once you've answered them on text-based code-training sites.
+- [ ] In terms of layout. we envision each question having a button that toggles an embedded video/audio div either in the main feed, or on separate route/component, with a small embedded repl.it-like coding widget below to type out the code as they record. Ultimately, our grander goal is to serve up (even potentially host) all clips so that the community can view / comment / vote on each others' 'quacks', similar to how you can see spoilers of how other developers solved programming questions once you've answered them on text-based code-training sites.
 
-We're also interested in implementing a merit-and-engagement-based points system (similar to Stack Overflow), 'verified' status for professional devs, and "Staff Pick" responses.   
+- [ ] We're also interested in implementing a merit-and-engagement-based points system (similar to Stack Overflow), 'verified' status for professional devs, and "Staff Pick" responses.   
 
-While we don't mind seeing code snippets here and there on the site -- particularly necessary in the interview prompts as well as the previously mentioned code editor widget -- we nontheless aim to limit code answers/comments, perhaps through strict limits on comment length, which can be handled via adjustments to <code>server/validation</code> (similar to our email/password validation handling). If users want to speak via code, they should potentially "Quack" back with a video and/or audio comment, not 
+- [ ] While we don't mind seeing code snippets here and there on the site -- particularly necessary in the interview prompts as well as the previously mentioned code editor widget -- we nontheless aim to limit code answers/comments, perhaps through strict limits on comment length, which can be handled via adjustments to <code>server/validation</code> (similar to our email/password validation handling). If users want to speak via code, they could potentially "Quack" back with a video and/or audio comment, just not reams of code. 
 
 ### Backend Routes  
 
@@ -177,7 +177,7 @@ password:123456</blockquote>
 
 ## Additional Info
 
-### Video and Audio demos and documentation
+### Video and Audio
 
 - https://developers.google.com/web/updates/2016/01/mediarecorder
 - https://quickblox.github.io/javascript-media-recorder/sample/

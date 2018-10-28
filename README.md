@@ -6,9 +6,13 @@ Hello, and welcome to our repo! Our **client** runs on localhost:3000, our expre
 
 Feel free to utlize our mLab URI @ <code>mongodb://admin:fullquack3@ds119449.mlab.com:19449/fullquack</code>just don't be surprised if we pop in some new datapoints here and there as we can't wait to do more refactoring ;)
 
-Thanks in advance for your help, feel free to ask us anything about the code, and have fun! --Jonathan, Jonah, and Andrew.  
+Thanks in advance for your help, feel free to ask us anything about the code, and have fun!	
 
-### Stretch Goals / Next Steps ###
+![Quack Quack!](https://thumbs.dreamstime.com/t/yellow-rubber-ducks-50268179.jpg) 
+
+**--Jonathan, Jonah, and Andrew**
+
+## Stretch Goals / Next Steps ###
 
 Linking up already-created back-end routes to the front-end (more details in the **[Backend Routes](#backend-routes)** section), including: liking/unliking, adding/deleting posts and comments, and deleting users' accounts. 
 
@@ -16,7 +20,7 @@ Currently questions are presented by the most recent -- we aim to add filtering 
 
 Implementing a 'Logout User' in two ways: 1) User-controlled 'logout' button; 2) Setting an expiration timeout (jwt token expiration isn't applicable to our current codebase, since the token, once logged in is set by localStorage, not token lifespan). 
 
-Setting up our core functionality to record and watch back 'Quacks', AKA video/audio recordings of users' answers to programming/whiteboard questions.  We are aiming to use (free and well-documented) in-browser video and/or audio recording APIs, particularly WebRTC (links [below](#video-and-audio)
+Setting up our core functionality to record and watch back 'Quacks', AKA video/audio recordings of users' answers to programming/whiteboard questions.  We are aiming to use (free and well-documented) in-browser video and/or audio recording APIs, particularly WebRTC (see [Video and Audio](#video-and-audio)
 ).  The first step is simply being able to record/re-watch/download users' own videos locally for each question.
 
 In terms of layout. we envision each question having a button that toggles an embedded video/audio div either in the main feed, or on separate route/component, with a small embedded repl.it-like coding widget below to type out the code as they record. Ultimately, our grander goal is to serve up (even potentially host) all clips so that the community can view / comment / vote on each others' 'quacks', similar to how you can see spoilers of how other developers solved programming questions once you've answered them on text-based code-training sites.
@@ -27,7 +31,7 @@ While we don't mind seeing code snippets here and there on the site -- particula
 
 ### Backend Routes  
 
-- [X] marked routes currently have frontend connections,  - [] routes are setup in mongo/express, available to be hooked up with the client. 
+- [X] marked routes currently have frontend connections,  - [ ] routes are setup in mongo/express, ready to be hooked up to the client. 
 
 *Note*: There is a proxy specified in <code>client/package.json</code> which allows you to skip the **localhost:5000** url prefix when making client-based http calls. 
 
@@ -173,46 +177,47 @@ password:123456</blockquote>
 
 ## Additional Info
 
-### [#Video and Audio] demos and documentation
+### Video and Audio demos and documentation
 
-https://developers.google.com/web/updates/2016/01/mediarecorder
-https://quickblox.github.io/javascript-media-recorder/sample/
-https://mdn.github.io/web-dictaphone/
-https://webrtc.github.io/samples/src/content/getusermedia/record/
-https://developer.mozilla.org/en-US/docs/Web/API/MediaStream_Recording_API/Recording_a_media_element
-https://developer.mozilla.org/en-US/docs/Web/API/MediaStream_Recording_API/Using_the_MediaStream_Recording_API#Capturing_the_media_stream
-https://developer.mozilla.org/en-US/docs/Web/API/MediaStream_Recording_API
-https://github.com/chrisjohndigital/TutorRoom
-https://github.com/chrisjohndigital/OpenLang
-https://addpipe.com/blog/mediarecorder-api/
-https://github.com/QuickBlox/javascript-media-recorder/
-https://developer.mozilla.org/en-US/docs/Web/API/MediaStream_Recording_API/Using_the_MediaStream_Recording_API
-https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia
+- https://developers.google.com/web/updates/2016/01/mediarecorder
+- https://quickblox.github.io/javascript-media-recorder/sample/
+- https://mdn.github.io/web-dictaphone/
+- https://webrtc.github.io/samples/src/content/getusermedia/record/
+- https://developer.mozilla.org/en-US/docs/Web/API/MediaStream_Recording_API/Recording_a_media_element
+- https://developer.mozilla.org/en-US/docs/Web/API/MediaStream_Recording_API/Using_the_MediaStream_Recording_API#Capturing_the_media_stream
+- https://developer.mozilla.org/en-US/docs/Web/API/MediaStream_Recording_API
+- https://github.com/chrisjohndigital/TutorRoom
+- https://github.com/chrisjohndigital/OpenLang
+- https://addpipe.com/blog/mediarecorder-api/
+- https://github.com/QuickBlox/javascript-media-recorder/
+- https://developer.mozilla.org/en-US/docs/Web/API/MediaStream_Recording_API/Using_the_MediaStream_Recording_API
+- https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia
 
 
 ### Coding Challenge Sites and Front-End Layout Inspiration:
 
-https://news.ycombinator.com/show
-https://www.glassdoor.com/Interview/software-developer-interview-questions-SRCH_KO0,18_SDMC.htm
-https://www.interviewcake.com/
-https://www.codewars.com/
-https://leetcode.com/
-https://careercup.com/
-https://www.toptal.com/ios/interview-questionshttps://www.reddit.com/r/cscareerquestions/comments/20ahfq/heres_a_pretty_big_list_of_programming_interview/
-https://programmingpraxis.com/
-https://codingbat.com/java
-https://github.com/andreis/interviewhttps://www.spoj.com/
-https://www.interviewbit.com/
-https://www.codechef.com/
+- https://news.ycombinator.com/show
+- https://www.glassdoor.com/Interview/software-developer-interview-questions-SRCH_KO0,18_SDMC.htm
+- https://www.interviewcake.com/
+- https://www.codewars.com/
+- https://leetcode.com/
+- https://careercup.com/
+- https://www.toptal.com/ios/interview-questions
+- https://www.reddit.com/r/cscareerquestions/comments/20ahfq/heres_a_pretty_big_list_of_programming_interview/
+- https://programmingpraxis.com/
+- https://codingbat.com/java
+- https://github.com/andreis/interviewhttps://www.spoj.com/
+- https://www.interviewbit.com/
+- https://www.codechef.com/
 
-### Rubber-Ducking Research:
-https://nickjanetakis.com/blog/solve-programming-problems-with-rubber-duck-debugging
-https://rubberduckdebugging.com/cyberduck/ (‘Chat’ out your issues with a bot)
-https://en.wikipedia.org/wiki/Rubber_duck_debugging
-https://blog.wsol.com/how-a-rubber-duck-taught-me-to-be-a-better-programmer
+### Rubber-Ducking Background Research:
+- https://nickjanetakis.com/blog/solve-programming-problems-with-rubber-duck-debugging
+- https://rubberduckdebugging.com/cyberduck/ (‘Chat’ out your issues with a bot)
+- https://en.wikipedia.org/wiki/Rubber_duck_debugging
+- https://blog.wsol.com/how-a-rubber-duck-taught-me-to-be-a-better-programmer
  
 
-### Hack Reactor Rubber-Ducking recommentations
+### Hack Reactor Rubber-Ducking Instructions:
 
 1) Prepare to record & time
 
@@ -226,8 +231,6 @@ Paste the problem statement into the work area in Repl.it (replace the original,
 Start your timer for: 20 minutes / TWENTY MINUTES
 Start recording.
 
+3) Do the problem in a structured way
 
-3) DO THE PROBLEM IN A STRUCTURED WAY
-
-Follow the instructions from the sidebar titled "How to Run Your Interview".
 Note: Since you are working by yourself, you have to mimic the live experience by asking rhetorical questions, then provisionally answering them yourself on behalf of your imaginary live interviewer. Ask those questions out loud anyway!

@@ -10,7 +10,7 @@ Thanks in advance for your help, feel free to ask us anything about the code, an
 
 ![Quack Quack!](https://thumbs.dreamstime.com/t/yellow-rubber-ducks-50268179.jpg) 
 
-**--Jonathan, Jonah, and Andrew**
+**--Jonathan, Andrew, and Jonah**
 
 ## Stretch Goals / Next Steps ###
 

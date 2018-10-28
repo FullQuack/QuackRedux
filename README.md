@@ -20,7 +20,7 @@ Thanks in advance for your help, feel free to ask us anything about the code, an
 
 - [ ] Implementing a 'Logout User' in two ways: 1) User-controlled 'logout' button; 2) Setting an expiration timeout (jwt token expiration isn't applicable to our current codebase, since the token, once logged in is set by localStorage, not token lifespan). 
 
-- [ ] Setting up our core functionality to record and watch back 'Quacks', AKA video/audio recordings of users' answers to programming/whiteboard questions.  We are aiming to use (free and well-documented) in-browser video and/or audio recording APIs, particularly WebRTC (see **[Video and Audio](#video-and-audio)**
+- [ ] Setting up our core functionality to record and watch back 'Quacks', AKA video/audio recordings of users' answers to programming/whiteboard questions.  We are aiming to use (free and well-documented) in-browser video and/or audio recording APIs, particularly WebRTC (see **[Additional Info](#additional-info)**
 ).  The first step is simply being able to record/re-watch/download users' own videos locally for each question.
 
 - [ ] In terms of layout. we envision each question having a button that toggles an embedded video/audio div either in the main feed, or on separate route/component, with a small embedded repl.it-like coding widget below to type out the code as they record. Ultimately, our grander goal is to serve up (even potentially host) all clips so that the community can view / comment / vote on each others' 'quacks', similar to how you can see spoilers of how other developers solved programming questions once you've answered them on text-based code-training sites.

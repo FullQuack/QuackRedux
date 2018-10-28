@@ -1,7 +1,7 @@
 {
-  "name": "devconnector",
+  "name": "fullquack",
   "version": "1.0.0",
-  "description": "Social Network for Codesmith Devs",
+  "description": "A community learning site for developers to improve their technical communication",
   "main": "server.js",
   "scripts": {
     "client-install": "npm install --prefix client",

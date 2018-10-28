@@ -1,126 +1,53 @@
-## Latest Changes
-1. Added Create-React-App, took out boilerplate
-2. Installed/scripted **concurrently** package (To Run Front + Backend Servers, in main dir, "npm run dev").
-3. Setup **proxy** in package.json to shorten server http requests urls, i.e., axios.get("/api/posts") as opposed to axios.get("http://localhost:5000/api/posts)
-4. Added **/config/keys.js** (which holds Mongoose hosted mLab URI) to .gitignore file to avoid accidentally giving away mlab credentials. When you clone/fork, add the following config/keys.js file: <blockquote>module.exports = {
-  mongoURI: 'mongodb://localhost/DevNetwork',
-  secretOrKey: 'secret'
-}</blockquote>Jonathan will pass along actual mlab credentials in person...
-5. Added react-router-dom package, created components for splash page and registration page/route. (Functional Client, fields not typeable yet).
-6. Completed 'Success' Routes for Login/Registration, saved jwt token to Local Storage. 
-7. New NPM packages (on client), react-router-dom, axios, jwt-decode. 
-8. 
- 
-## FullQuack Previous Backend Route Directory
+## FullQuack MERN-Project (MongoDB, Express, Node, React/Redux)
 
-### Backend (MongoDB, Express.js, Node.js) 
+<blockquote>Despite ample ‘coding interview training’ sites/resources, many developers lack the experience to improve their technical communication to excel on job interview and whiteboarding questions. </blockquote>
 
-1. **Register new user** via *POST* @ '/api/users/register' -- returns new MongoDB object:<blockquote>email:jonathanschwartz@gmail.com
+Hello, and welcome to our repo! Our **client** runs on localhost:3000, our express **server** runs on localhost:5000 (two terminals running <code>npm run start</code>), and **mongoDB** is currently set for the developer's local database, although an mLab URI can be substituted in <code>server/config/keys.js</code>. 
+
+Feel free to utlize our mLab URI @ <code>mongodb://admin:fullquack3@ds119449.mlab.com:19449/fullquack</code>just don't be surprised if we pop in some new datapoints here and there as we can't wait to do more refactoring ;)
+
+Thanks in advance for your help, feel free to ask us anything about the code, and have fun! --Jonathan, Jonah, and Andrew.  
+
+### Stretch Goals / Next Steps ###
+
+Linking up already-created back-end routes to the front-end (more details in the **[Backend Routes](#backend-routes)** section), including: liking/unliking, adding/deleting posts and comments, and deleting users' accounts. 
+
+Currently questions are presented by the most recent -- we aim to add filtering options, including order-by-popularity and tag-names (Javascript, Google Questions, roles, etc.). 
+
+Implementing a 'Logout User' in two ways: 1) User-controlled 'logout' button; 2) Setting an expiration timeout (jwt token expiration isn't applicable to our current codebase, since the token, once logged in is set by localStorage, not token lifespan). 
+
+Setting up our core functionality to record and watch back 'Quacks', AKA video/audio recordings of users' answers to programming/whiteboard questions.  We are aiming to use (free and well-documented) in-browser video and/or audio recording APIs, particularly WebRTC (links [below](#video-and-audio)
+).  The first step is simply being able to record/re-watch/download users' own videos locally for each question.
+
+In terms of layout. we envision each question having a button that toggles an embedded video/audio div either in the main feed, or on separate route/component, with a small embedded repl.it-like coding widget below to type out the code as they record. Ultimately, our grander goal is to serve up (even potentially host) all clips so that the community can view / comment / vote on each others' 'quacks', similar to how you can see spoilers of how other developers solved programming questions once you've answered them on text-based code-training sites.
+
+We're also interested in implementing a merit-and-engagement-based points system (similar to Stack Overflow), 'verified' status for professional devs, and "Staff Pick" responses.   
+
+While we don't mind seeing code snippets here and there on the site -- particularly necessary in the interview prompts as well as the previously mentioned code editor widget -- we nontheless aim to limit code answers/comments, perhaps through strict limits on comment length, which can be handled via adjustments to <code>server/validation</code> (similar to our email/password validation handling). If users want to speak via code, they should potentially "Quack" back with a video and/or audio comment, not 
+
+### Backend Routes  
+
+- [X] marked routes currently have frontend connections,  - [] routes are setup in mongo/express, available to be hooked up with the client. 
+
+*Note*: There is a proxy specified in <code>client/package.json</code> which allows you to skip the **localhost:5000** url prefix when making client-based http calls. 
+
+1. - [X] **Register new user** via *POST* @ '/api/users/register' -- returns new MongoDB object:<blockquote>email:jonathanschwartz@gmail.com
 password:123456
 password2:123456
 name:Jonathan Schwartz</blockquote>
 **validator** *handles validation (proper email format; passwords must match; min/max password length; required inputs must exist).* 
 
-2. **Login existing user** via *POST* @ '/api/users/login' -- returns bearer token (expires after 1 hour): <blockquote>email:jonathanschwartz@gmail.com
+2. - [X] **Login existing user** via *POST* @ '/api/users/login' -- returns bearer token <blockquote>email:jonathanschwartz@gmail.com
 password:123456</blockquote>
 **passport** *and* **passport-jwt** *facilitates jwt authentication;* **bcrypt** *for password hashing.*
 
-3. Using current Bearer token, **get current user** via *GET* @ '/api/users/current' -- returns current user's MongoDB id/name/email: <blockquote>Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViZDA3Zjk1OWJiZWUxNjJjMmU4MmNiZSIsIm5hbWUiOiJKb25hdGhhbiBTY2h3YXJ0eiIsImF2YXRhciI6Ii8vd3d3LmdyYXZhdGFyLmNvbS9hdmF0YXIvY2UxYmE0ZDY1YWRjZjE3MDAwNThkYmJmMzYxNjYxMTg_cz0yMDAmcj1wZyZkPWlkZW50aWNvbiIsImlhdCI6MTU0MDM5MTkzMCwiZXhwIjoxNTQwMzk1NTMwfQ.aiLGkQyc4OIPAmbfpK-rT6yXUT3y7oc_jMlKSTOAlX0</blockquote>
+3. - [ ] Using current Bearer token, **get current user** via *GET* @ '/api/users/current' -- returns current user's MongoDB id/name/email: <blockquote>Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViZDA3Zjk1OWJiZWUxNjJjMmU4MmNiZSIsIm5hbWUiOiJKb25hdGhhbiBTY2h3YXJ0eiIsImF2YXRhciI6Ii8vd3d3LmdyYXZhdGFyLmNvbS9hdmF0YXIvY2UxYmE0ZDY1YWRjZjE3MDAwNThkYmJmMzYxNjYxMTg_cz0yMDAmcj1wZyZkPWlkZW50aWNvbiIsImlhdCI6MTU0MDM5MTkzMCwiZXhwIjoxNTQwMzk1NTMwfQ.aiLGkQyc4OIPAmbfpK-rT6yXUT3y7oc_jMlKSTOAlX0</blockquote>
 
-4. **Make new (or update existing) Profile** for the *jwt-authenticated* user via *POST* @ '/api/profile' -- returns newly created MongoDB *Profile* (connected via Object.Id to User-collection): <blockquote>handle:jsxtreme
-company:Codesmith
-website:www.jonathanschwartz.com
-location:NYC
-status:Seeking Employment
-youtube:www.youtube.com/joingenerationwifi
-linkedin:www.linkedin/jonathanpschwartz
-twitter:www.twitter.com/pickingdailies
-facebook:www.facebook.com/jonathanschwartz
-instagram:www.instagram/filmboy3
-skills:HTML, CSS, Javascript</blockquote> **validator** checks url formatting for optional social media, ensures mandatory *skills* (array), *handle*, and *status* are present. **Note:** *bio*, *githubusername*, *social* (obj), *experience* (obj), *education* (obj) are optional. 
-
-5. **Get existing profile** for the *jwt-authenticated* user via *GET* @ '/api/profile' -- returns existing MongoDB *Profile*: <blockquote>{
-    "social": {
-        "youtube": "www.youtube.com/joingenerationwifi",
-        "twitter": "www.twitter.com/pickingdailies",
-        "facebook": "www.facebook.com/jonathanschwartz",
-        "linkedin": "www.linkedin/jonathanpschwartz",
-        "instagram": "www.instagram/filmboy3"
-    },
-    "skills": [
-        "HTML",
-        " CSS",
-        " Javascript"
-    ],
-    "_id": "5bd08a8c9bbee162c2e82cbf",
-    "user": {
-        "_id": "5bd07f959bbee162c2e82cbe",
-        "name": "Jonathan Schwartz",
-        "avatar": "//www.gravatar.com/avatar/ce1ba4d65adcf1700058dbbf36166118?s=200&r=pg&d=identicon"
-    },
-    "handle": "jsxtreme",
-    "company": "Codesmith",
-    "website": "www.jonathanschwartz.com",
-    "location": "NYC",
-    "status": "Seeking Employment",
-    "experience": [
-        {
-            "current": false,
-            "description": false,
-            "_id": "5bd09117b5e5e318cd4c32c7",
-            "title": "Original Cast Member ",
-            "company": "Aladdin on Broadway",
-            "location": "New Amsterdam Theater",
-            "from": "2013-01-01T00:00:00.000Z"
-        }
-    ],
-    "education": [
-        {
-            "current": false,
-            "_id": "5bd08f0fb5e5e318cd4c32c6",
-            "school": "Cranford High School",
-            "degree": "GED",
-            "fieldofstudy": "General High School Education",
-            "from": "2002-01-01T00:00:00.000Z",
-            "to": "2006-01-01T00:00:00.000Z",
-            "description": "Graduated as Valedictorian with a 4.64 weighted GPA"
-        },
-        {
-            "current": false,
-            "description": "false",
-            "_id": "5bd08e499bbee162c2e82cc0",
-            "school": "Princeton University",
-            "degree": "BA",
-            "fieldofstudy": "Sociology",
-            "from": "2006-01-01T00:00:00.000Z"
-        }
-    ],
-    "date": "2018-10-24T15:06:52.983Z",
-    "__v": 3
-}</blockquote>
-
-6. **Get all existing profiles** @ GET '/api/profile/all' -- returns existing MongoDB *Profiles* as Array of *Profile* objects (Public Route). 
-
-7. **Get profile by handle** @ GET '/api/profile/handle/:handle -- returns *Profile* by handle param (Public Route). 
-
-8. **Get profile by user id** @ GET '/api/profile/user/:user_id -- returns *Profile* by user_id (users collection) param (Public Route). 
-
-9. **Add an Education record** to profile for (authenticated) user via *POST* @ '/api/profile/education' -- returns updated profile entry:<blockquote>school:Princeton University
-degree:BA fieldofstudy:Sociology
-from:2006</blockquote>**validator** ensures mandatory *school*, *degree*, *fieldofstudy* and *from* fields are present **Note:** *to*, *current*, and *description* fields are optional.
-
-10. **Delete an Education record** from profile for (authenticated) user via *DELETE* @ '/api/profile/education/:edu_id' -- returns updated profile entry.
-
-11. **Add an Experience record** to profile for (authenticated) user via *POST* @ '/api/profile/experience' -- returns updated profile entry:<blockquote>title:Original Cast Member 
-company:Aladdin on Broadway
-from:2013
-location:New Amsterdam Theater</blockquote>**validator** ensures mandatory *title*, *company*, *from* fields are present. **Note:** *location*, *current*, and *description* are optional.
-
-12. **Delete an Experience record** from profile (authenticated) *DELETE* @ '/api/profile/experience/:exp_id' -- returns updated profile entry.
-
-14. **Add a post** to user's profile (authenticated) via *POST* **model** @ '/api/posts/' -- returns new post: <blockquote>{
+14. - [ ] **Add a post** (authenticated) via *POST* **model** @ '/api/posts/' -- returns new post: <blockquote>{
     "_id": "5bd0b0cceab29e88d1ecc0a6",
-    "text": "Does anyone want to do some pair programming this afternoon?",
+    "text": "You have a five quart jug and a three quart jug, and an unlimited supply of water (but no measuring cups) How would you come up with exactly four quarts of water?",
+    "name": "Jonathan Schwartz",
+    "tags": "Google, Brain-Teaser, Back-End"
     "user": "5bd0aad62634ee4a4a9d73ea",
     "likes": [],
     "comments": [],
@@ -128,7 +55,7 @@ location:New Amsterdam Theater</blockquote>**validator** ensures mandatory *titl
     "__v": 0
 }</blockquote>**validator** ensures mandatory text field. **Note:** Additional fields (name, avatar) will be pulled via Redux State, not necessary in post request body. 
 
-15. **Get all users' posts** (Public) sorted by date, *GET* @ '/api/posts/' -- returns all posts, as array of Post objects:<blockquote>[
+15. - [X] **Get all users' posts** (Public) sorted by date, *GET* @ '/api/posts/' -- returns all posts, as array of Post objects:<blockquote>[
     {
         "_id": "5bd0b39feab29e88d1ecc0a8",
         "text": "I need coffee, ASAP!",
@@ -158,11 +85,11 @@ location:New Amsterdam Theater</blockquote>**validator** ensures mandatory *titl
     }
 ]</blockquote>
 
-15. **Delete a post** (authenticated) via *DELETE* @ '/api/posts/:id -- returns: <blockquote>{
+15. - [ ] **Delete a post** (authenticated) via *DELETE* @ '/api/posts/:id -- returns: <blockquote>{
     "success": true
 }</blockquote>
 
-16. **Add a comment** (authenticated) via *POST* @ '/api/posts/comment/:id -- returns: <blockquote>{
+16. - [ ] **Add a comment** (authenticated) via *POST* @ '/api/posts/comment/:id -- returns: <blockquote>{
     "_id": "5bd0b259eab29e88d1ecc0a7",
     "text": "Is the weather nice today?",
     "user": "5bd0aad62634ee4a4a9d73ea",
@@ -179,7 +106,7 @@ location:New Amsterdam Theater</blockquote>**validator** ensures mandatory *titl
     "__v": 1
 }</blockquote>**validator** ensures mandatory text field. **Note:** Additional fields (name, avatar) will be pulled via Redux State, not necessary in post request body.
 
-17. **Delete a comment** (authenticated) via *DELETE* @ '/api/posts/comment/:id/:comment_id -- returns updated *Post* <blockquote>{
+17. - [ ] **Delete a comment** (authenticated) via *DELETE* @ '/api/posts/comment/:id/:comment_id -- returns updated *Post* <blockquote>{
     "_id": "5bd0b259eab29e88d1ecc0a7",
     "text": "Is the weather nice today?",
     "user": "5bd0aad62634ee4a4a9d73ea",
@@ -202,7 +129,7 @@ location:New Amsterdam Theater</blockquote>**validator** ensures mandatory *titl
     "__v": 4
 }</blockquote>
 
-18. **Like a Post** (authenticated) via *POST* @ '/api/posts/like/:id' -- returns updated post:<blockquote>{
+18. - [ ] **Like a Post** (authenticated) via *POST* @ '/api/posts/like/:id' -- returns updated post:<blockquote>{
     "_id": "5bd0b259eab29e88d1ecc0a7",
     "text": "Is the weather nice today?",
     "user": "5bd0aad62634ee4a4a9d73ea",
@@ -230,7 +157,7 @@ location:New Amsterdam Theater</blockquote>**validator** ensures mandatory *titl
     "__v": 5
 }</blockquote>**Note:** If user already liked the post, returns error; You *can* like your own post.
 
-14. **Unlike a Post** (authenticated) via *POST* @ '/api/posts/unlike/:id' -- returns updated post:<blockquote>{
+14. - [ ] **Unlike a Post** (authenticated) via *POST* @ '/api/posts/unlike/:id' -- returns updated post:<blockquote>{
     "_id": "5bd0b39feab29e88d1ecc0a8",
     "text": "I need coffee, ASAP!",
     "user": "5bd0a4652634ee4a4a9d73e2",
@@ -240,6 +167,67 @@ location:New Amsterdam Theater</blockquote>**validator** ensures mandatory *titl
     "__v": 4
 }</blockquote>**Note:** If the user has *not* already liked the post, returns error message.  
 
-13. **Delete a user** completely from **Profile** and **Users** collections (authenticated) via *DELETE* @ '/api/profile/' -- returns success message: <blockquote>{
+13. - [ ] **Delete a user** completely from **Profile** and **Users** collections (authenticated) via *DELETE* @ '/api/profile/' -- returns success message: <blockquote>{
     "success": true
 }</blockquote>
+
+## Additional Info
+
+### [#Video and Audio] demos and documentation
+
+https://developers.google.com/web/updates/2016/01/mediarecorder
+https://quickblox.github.io/javascript-media-recorder/sample/
+https://mdn.github.io/web-dictaphone/
+https://webrtc.github.io/samples/src/content/getusermedia/record/
+https://developer.mozilla.org/en-US/docs/Web/API/MediaStream_Recording_API/Recording_a_media_element
+https://developer.mozilla.org/en-US/docs/Web/API/MediaStream_Recording_API/Using_the_MediaStream_Recording_API#Capturing_the_media_stream
+https://developer.mozilla.org/en-US/docs/Web/API/MediaStream_Recording_API
+https://github.com/chrisjohndigital/TutorRoom
+https://github.com/chrisjohndigital/OpenLang
+https://addpipe.com/blog/mediarecorder-api/
+https://github.com/QuickBlox/javascript-media-recorder/
+https://developer.mozilla.org/en-US/docs/Web/API/MediaStream_Recording_API/Using_the_MediaStream_Recording_API
+https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia
+
+
+### Coding Challenge Sites and Front-End Layout Inspiration:
+
+https://news.ycombinator.com/show
+https://www.glassdoor.com/Interview/software-developer-interview-questions-SRCH_KO0,18_SDMC.htm
+https://www.interviewcake.com/
+https://www.codewars.com/
+https://leetcode.com/
+https://careercup.com/
+https://www.toptal.com/ios/interview-questionshttps://www.reddit.com/r/cscareerquestions/comments/20ahfq/heres_a_pretty_big_list_of_programming_interview/
+https://programmingpraxis.com/
+https://codingbat.com/java
+https://github.com/andreis/interviewhttps://www.spoj.com/
+https://www.interviewbit.com/
+https://www.codechef.com/
+
+### Rubber-Ducking Research:
+https://nickjanetakis.com/blog/solve-programming-problems-with-rubber-duck-debugging
+https://rubberduckdebugging.com/cyberduck/ (‘Chat’ out your issues with a bot)
+https://en.wikipedia.org/wiki/Rubber_duck_debugging
+https://blog.wsol.com/how-a-rubber-duck-taught-me-to-be-a-better-programmer
+ 
+
+### Hack Reactor Rubber-Ducking recommentations
+
+1) Prepare to record & time
+
+Prepare your screencasting (both video and audio) setup all ready to go before de-obfuscating the problem statement.
+Prepare an audible countdown timer (say, the Clock app on your phone).
+
+2) Begin the problem
+
+Go to http://www.rot13.com/ and de-obfuscate the problem statement.
+Paste the problem statement into the work area in Repl.it (replace the original, obfuscated version).
+Start your timer for: 20 minutes / TWENTY MINUTES
+Start recording.
+
+
+3) DO THE PROBLEM IN A STRUCTURED WAY
+
+Follow the instructions from the sidebar titled "How to Run Your Interview".
+Note: Since you are working by yourself, you have to mimic the live experience by asking rhetorical questions, then provisionally answering them yourself on behalf of your imaginary live interviewer. Ask those questions out loud anyway!

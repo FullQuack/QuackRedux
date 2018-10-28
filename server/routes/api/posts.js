@@ -5,8 +5,8 @@ const passport = require('passport');
 
 // Post model
 const Post = require('../../models/Post');
-// Profile model
-const Profile = require('../../models/Profile');
+// User model
+const User = require('../../models/User');
 
 // Load Post Validation
 const validatePostInput = require('../../validation/post');
@@ -49,10 +49,10 @@ router.get('/:id', (req, res) => {
 router.delete('/:id', passport.authenticate('jwt', {
   session: false
 }), (req, res) => {
-  Profile.findOne({
+  User.findOne({
       user: req.user.id
     })
-    .then(profile => {
+    .then(user => {
       Post.findById(req.params.id)
         .then(post => {
           // Check for post owner
@@ -79,10 +79,10 @@ router.delete('/:id', passport.authenticate('jwt', {
 router.post('/like/:id', passport.authenticate('jwt', {
   session: false
 }), (req, res) => {
-  Profile.findOne({
+  User.findOne({
       user: req.user.id
     })
-    .then(profile => {
+    .then(user => {
       Post.findById(req.params.id)
         .then(post => {
           if (post.likes.filter(like => like.user.toString() === req.user.id).length > 0) {
@@ -112,9 +112,9 @@ router.post(
     session: false
   }),
   (req, res) => {
-    Profile.findOne({
+    User.findOne({
       user: req.user.id
-    }).then(profile => {
+    }).then(user => {
       Post.findById(req.params.id)
         .then(post => {
           if (

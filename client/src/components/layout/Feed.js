@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getFeed } from '../../actions/postActions';
+import { addLike } from '../../actions/postActions';
+import { deleteLike } from '../../actions/postActions';
 
 class Feed extends Component {
   constructor() {
@@ -23,12 +25,12 @@ class Feed extends Component {
       let date = new Date(Date.parse(posts[i].date));
       let dateObject = new Date(Date.parse(date));
       let dateReadable = dateObject.toDateString();
-      allPosts.push(<div className="questionBox"> <i className="fas fa-arrow-up"></i> <strong> {likesCount} </strong><i className="fas fa-arrow-down"></i> <span className='question' key={i}>{posts[i].text}<br></br>{posts[i].tags}<br></br>{posts[i].name}<hr></hr></span></div>);
+      allPosts.push(<div key={i} className="questionBox"> <i className="fas fa-arrow-up" key={i}></i> <strong> {likesCount} </strong><i className="fas fa-arrow-down" key={i}></i> <span className='question' key={i}>{posts[i].text}<br></br>{posts[i].tags}<br></br>{posts[i].name}<hr></hr></span></div>);
     }
     return (
       <div className="feed-container">
       
-        <h2>{this.props.auth.user.name} successfully Logged in!</h2>
+        <h3>{this.props.auth.user.name} successfully Logged in!</h3>
         {allPosts}
       </div>
 
@@ -42,4 +44,4 @@ const mapStateToProps = state => ({
   feed: state.feed
 });
 
-export default connect(mapStateToProps, { getFeed })(Feed);
+export default connect(mapStateToProps, { getFeed, addLike, deleteLike })(Feed);

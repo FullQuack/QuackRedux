@@ -18,11 +18,11 @@
   color: white;
 }
 
-/* .questionBox {
+.questionBox {
   -webkit-box-shadow: 3px 14px 22px -13px rgba(0,0,0,0.43);
 -moz-box-shadow: 3px 14px 22px -13px rgba(0,0,0,0.43);
   box-shadow: 3px 14px 22px -13px rgba(0,0,0,0.43);
-} */
+}
 
 .App-link {
   color: #61dafb;

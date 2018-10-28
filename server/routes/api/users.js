@@ -38,10 +38,10 @@ router.post('/register', (req, res) => {
       email: req.body.email
     })
     .then(user => {
-      if (user) {
-        errors.email = 'Email already exists';
-        return res.status(400).json(errors);
-      } 
+        if (user) {
+          errors.email = 'Email already exists';
+          return res.status(400).json(errors);
+        } else {
 
         const newUser = new User({
           name: req.body.name,

@@ -37,9 +37,7 @@ Thanks in advance for your help, feel free to ask us anything about the code, an
 
 ### Backend Routes  
 
-- [X] marked routes currently have frontend connections,  - [ ] routes are setup in mongo/express, ready to be hooked up to the client. 
-
-*Note*: There is a proxy specified in <code>client/package.json</code> which allows you to skip the **localhost:5000** url prefix when making client-based http calls. 
+**NOTES**: Currently **checkmarked routes** have been successfully linked to our front-end, while **unchecked routes** are setup in mongo/express, ready to be hooked up to the client. There is a **proxy** setup in <code>client/package.json</code> which allows you to skip the **localhost:5000** url prefix when making client-based http calls. 
 
 1. - [X] **Register new user** via *POST* @ '/api/users/register' -- returns new MongoDB object:<blockquote>email:jonathanschwartz@gmail.com
 password:123456
@@ -51,9 +49,7 @@ name:Jonathan Schwartz</blockquote>
 password:123456</blockquote>
 **passport** *and* **passport-jwt** *facilitates jwt authentication;* **bcrypt** *for password hashing.*
 
-3. - [ ] Using current Bearer token, **get current user** via *GET* @ '/api/users/current' -- returns current user's MongoDB id/name/email: <blockquote>Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViZDA3Zjk1OWJiZWUxNjJjMmU4MmNiZSIsIm5hbWUiOiJKb25hdGhhbiBTY2h3YXJ0eiIsImF2YXRhciI6Ii8vd3d3LmdyYXZhdGFyLmNvbS9hdmF0YXIvY2UxYmE0ZDY1YWRjZjE3MDAwNThkYmJmMzYxNjYxMTg_cz0yMDAmcj1wZyZkPWlkZW50aWNvbiIsImlhdCI6MTU0MDM5MTkzMCwiZXhwIjoxNTQwMzk1NTMwfQ.aiLGkQyc4OIPAmbfpK-rT6yXUT3y7oc_jMlKSTOAlX0</blockquote>
-
-14. - [ ] **Add a post** (authenticated) via *POST* **model** @ '/api/posts/' -- returns new post: <blockquote>{
+3. - [ ] **Add a post** (authenticated) via *POST* **model** @ '/api/posts/' -- returns new post: <blockquote>{
     "_id": "5bd0b0cceab29e88d1ecc0a6",
     "text": "You have a five quart jug and a three quart jug, and an unlimited supply of water (but no measuring cups) How would you come up with exactly four quarts of water?",
     "name": "Jonathan Schwartz",
@@ -65,11 +61,13 @@ password:123456</blockquote>
     "__v": 0
 }</blockquote>**validator** ensures mandatory text field. **Note:** Additional fields (name) will be pulled via Redux State, not necessary in post request body. 
 
-15. - [X] **Get all users' posts** (Public) sorted by date, *GET* @ '/api/posts/' -- returns all posts, as array of Post objects:<blockquote>[
+4. - [X] **Get all users' posts** (Public) sorted by date, *GET* @ '/api/posts/' -- returns all posts, as array of Post objects:<blockquote>[
     {
         "_id": "5bd0b39feab29e88d1ecc0a8",
-        "text": "I need coffee, ASAP!",
+        "text": "How do you find the missing number in a given integer array of 1 to 100?",
         "user": "5bd0a4652634ee4a4a9d73e2",
+        "name": "Jonah Wilkof",
+        "tags": "Big Four, Algorithm, Data Structures"
         "likes": [],
         "comments": [],
         "date": "2018-10-24T18:02:07.881Z",
@@ -77,7 +75,9 @@ password:123456</blockquote>
     },
     {
         "_id": "5bd0b259eab29e88d1ecc0a7",
-        "text": "Is the weather nice today?",
+        "text": "How do you find the largest and smallest number in an unsorted integer array?",
+        "name": "Andrew Catalano",
+        "tags": "Arrays"
         "user": "5bd0aad62634ee4a4a9d73ea",
         "likes": [],
         "comments": [],
@@ -86,7 +86,9 @@ password:123456</blockquote>
     },
     {
         "_id": "5bd0b0cceab29e88d1ecc0a6",
-        "text": "Does anyone want to do some pair programming this afternoon?",
+        "text": "How do you reverse a singly linked list without recursion?",
+        "name": Jonathan Schwartz,
+        "tags": "Linked Lists, Data Structures, Node Interview",
         "user": "5bd0aad62634ee4a4a9d73ea",
         "likes": [],
         "comments": [],
@@ -95,89 +97,101 @@ password:123456</blockquote>
     }
 ]</blockquote>
 
-15. - [ ] **Delete a post** (authenticated) via *DELETE* @ '/api/posts/:id -- returns: <blockquote>{
+5. - [ ] **Delete a post** (authenticated) via *DELETE* @ '/api/posts/:id -- returns: <blockquote>{
     "success": true
 }</blockquote>
 
-16. - [ ] **Add a comment** (authenticated) via *POST* @ '/api/posts/comment/:id -- returns: <blockquote>{
+6. - [ ] **Add a comment** (authenticated) via *POST* @ '/api/posts/comment/:id -- returns: <blockquote>{
     "_id": "5bd0b259eab29e88d1ecc0a7",
-    "text": "Is the weather nice today?",
+    "text": "How do you find the missing number in a given integer array of 1 to 100?",
+    "name": "Jonah Wilkof",
     "user": "5bd0aad62634ee4a4a9d73ea",
     "likes": [],
     "comments": [
         {
             "_id": "5bd0b5caeab29e88d1ecc0aa",
-            "text": "It's pretty cold ... wearing shorts was a bad choice ...",
+            "text": "Excellent response, you spoke clearly from a high conceptual level then worked your way down.",
+            "name": "Andrew Catalano",
             "user": "5bd0a4652634ee4a4a9d73e2",
             "date": "2018-10-24T18:11:22.624Z"
+        },
+         {
+            "date": "2018-10-24T18:11:22.624Z",
+            "_id": "5bd0b5caeab29e88d1ecc0aa",
+            "name": "Jonathan Schwartz",
+            "text": "Watch your 'um' and 'likes' -- otherwise, great answer!",
+            "user": "5bd0a4652634ee4a4a9d73e2"
         }
     ],
     "date": "2018-10-24T17:56:41.491Z",
     "__v": 1
 }</blockquote>**validator** ensures mandatory text field. **Note:** Additional fields (i.e., name) will be pulled via Redux State, not necessary in post request body.
 
-17. - [ ] **Delete a comment** (authenticated) via *DELETE* @ '/api/posts/comment/:id/:comment_id -- returns updated *Post* <blockquote>{
+7. - [ ] **Delete a comment** (authenticated) via *DELETE* @ '/api/posts/comment/:id/:comment_id -- returns updated *Post* <blockquote>{
     "_id": "5bd0b259eab29e88d1ecc0a7",
-    "text": "Is the weather nice today?",
+    "text": "How do you find the missing number in a given integer array of 1 to 100?",
+    "name": "Jonah Wilkof",
     "user": "5bd0aad62634ee4a4a9d73ea",
     "likes": [],
     "comments": [
         {
-            "date": "2018-10-24T18:12:45.446Z",
-            "_id": "5bd0b61deab29e88d1ecc0ab",
-            "text": "Update: I just changed into pants!",
-            "user": "5bd0a4652634ee4a4a9d73e2"
-        },
-        {
-            "date": "2018-10-24T18:11:22.624Z",
             "_id": "5bd0b5caeab29e88d1ecc0aa",
-            "text": "It's pretty cold ... wearing shorts was a bad choice ...",
-            "user": "5bd0a4652634ee4a4a9d73e2"
+            "text": "Excellent response, you spoke clearly from a high conceptual level then worked your way down.",
+            "name": "Andrew Catalano",
+            "user": "5bd0a4652634ee4a4a9d73e2",
+            "date": "2018-10-24T18:11:22.624Z"
         }
     ],
     "date": "2018-10-24T17:56:41.491Z",
-    "__v": 4
+    "__v": 1
 }</blockquote>
 
-18. - [ ] **Like a Post** (authenticated) via *POST* @ '/api/posts/like/:id' -- returns updated post:<blockquote>{
+8. - [ ] **Like a Post** (authenticated) via *POST* @ '/api/posts/like/:id' -- returns updated post:<blockquote>{
     "_id": "5bd0b259eab29e88d1ecc0a7",
-    "text": "Is the weather nice today?",
+    "text": "How do you find the missing number in a given integer array of 1 to 100?",
+    "name": "Jonah Wilkof",
     "user": "5bd0aad62634ee4a4a9d73ea",
     "likes": [
         {
             "_id": "5bd0b7f8eab29e88d1ecc0ad",
-            "user": "5bd0a4652634ee4a4a9d73e2"
+            "user": "5bd0a4652634ee4a4a9d73e2",
+            "name": "Jonathan Schwartz",
+            "date": "2018-10-24T18:12:45.446Z",
         }
-    ],
+             ],
     "comments": [
         {
-            "date": "2018-10-24T18:12:45.446Z",
-            "_id": "5bd0b61deab29e88d1ecc0ab",
-            "text": "Update: I just changed into pants!",
-            "user": "5bd0a4652634ee4a4a9d73e2"
-        },
-        {
-            "date": "2018-10-24T18:11:22.624Z",
             "_id": "5bd0b5caeab29e88d1ecc0aa",
-            "text": "It's pretty cold ... wearing shorts was a bad choice ...",
-            "user": "5bd0a4652634ee4a4a9d73e2"
+            "text": "Excellent response, you spoke clearly from a high conceptual level then worked your way down.",
+            "name": "Andrew Catalano",
+            "user": "5bd0a4652634ee4a4a9d73e2",
+            "date": "2018-10-24T18:11:22.624Z"
         }
     ],
     "date": "2018-10-24T17:56:41.491Z",
-    "__v": 5
+    "__v": 1
 }</blockquote>**Note:** If user already liked the post, returns error; You *can* like your own post.
 
-14. - [ ] **Unlike a Post** (authenticated) via *POST* @ '/api/posts/unlike/:id' -- returns updated post:<blockquote>{
-    "_id": "5bd0b39feab29e88d1ecc0a8",
-    "text": "I need coffee, ASAP!",
-    "user": "5bd0a4652634ee4a4a9d73e2",
+9. - [ ] **Unlike a Post** (authenticated) via *POST* @ '/api/posts/unlike/:id' -- returns updated post:<blockquote>{
+    "_id": "5bd0b259eab29e88d1ecc0a7",
+    "text": "How do you find the missing number in a given integer array of 1 to 100?",
+    "name": "Jonah Wilkof",
+    "user": "5bd0aad62634ee4a4a9d73ea",
     "likes": [],
-    "comments": [],
-    "date": "2018-10-24T18:02:07.881Z",
-    "__v": 4
+    "comments": [
+        {
+            "_id": "5bd0b5caeab29e88d1ecc0aa",
+            "text": "Excellent response, you spoke clearly from a high conceptual level then worked your way down.",
+            "name": "Andrew Catalano",
+            "user": "5bd0a4652634ee4a4a9d73e2",
+            "date": "2018-10-24T18:11:22.624Z"
+        }
+    ],
+    "date": "2018-10-24T17:56:41.491Z",
+    "__v": 1
 }</blockquote>**Note:** If the user has *not* already liked the post, returns error message.  
 
-13. - [ ] **Delete a user** completely from **Profile** and **Users** collections (authenticated) via *DELETE* @ '/api/profile/' -- returns success message: <blockquote>{
+10. - [ ] **Delete a user** completely from **Profile** and **Users** collections (authenticated) via *DELETE* @ '/api/profile/' -- returns success message: <blockquote>{
     "success": true
 }</blockquote>
 

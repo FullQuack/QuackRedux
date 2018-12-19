@@ -1,4 +1,4 @@
-## FullQuack MERN-Project (MongoDB, Express, Node, React/Redux)
+## FullQuack Project (WIP -- MongoDB, Express, Node, React/Redux)
 
 <blockquote>Despite ample ‘coding interview training’ sites/resources, many developers lack the experience to improve their technical communication to excel on job interview and whiteboarding questions. </blockquote>
 

@@ -232,7 +232,7 @@ password:123456</blockquote>
 
 ### Rubber-Ducking Background Research:
 - https://nickjanetakis.com/blog/solve-programming-problems-with-rubber-duck-debugging
-- https://rubberduckdebugging.com/cyberduck/ (‘Chat’ out your issues with a bot)
+- https://rubberduckdebugging.com/cyberduck/ (‘Chat’ out issues with a bot)
 - https://en.wikipedia.org/wiki/Rubber_duck_debugging
 - https://blog.wsol.com/how-a-rubber-duck-taught-me-to-be-a-better-programmer
  
